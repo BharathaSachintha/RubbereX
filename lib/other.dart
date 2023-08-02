@@ -5,10 +5,10 @@ class Other {
   final String image;
 
   Other(
-      {this.title,
-      this.discription,
-      this.price,
-      this.image,});
+      {required this.title,
+        required this.discription,
+        required this.price,
+        required this.image,});
 }
 
 List<Other> others = [

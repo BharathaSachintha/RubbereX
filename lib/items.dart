@@ -8,13 +8,13 @@ class Items {
   final String gram;
 
   Items({
-    this.inumber,
-    this.title,
-    this.discription,
-    this.price,
-    this.height,
-    this.image,
-    this.gram,
+    required this.inumber,
+    required this.title,
+    required this.discription,
+    required this.price,
+    required this.height,
+    required this.image,
+    required this.gram,
   });
 }
 

@@ -8,13 +8,13 @@ class Plant {
   final String port;
 
   Plant(
-      {this.title,
-      this.discription,
-      this.price,
-      this.height,
-      this.image,
-      this.temprature,
-      this.port,});
+      {required this.title,
+        required this.discription,
+        required this.price,
+        required this.height,
+        required this.image,
+        required this.temprature,
+        required this.port,});
 }
 
 List<Plant> plants = [
