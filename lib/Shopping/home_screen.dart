@@ -1,17 +1,18 @@
 library home_view;
 
-import 'package:app/Shopping/cartPage/cartPage.dart';
-import 'package:app/Shopping/mainController.dart';
-import 'package:app/Shopping/product_details/productDetails.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rubberex/Shopping/product_details/productDetails.dart';
+
+import 'cartPage/cartPage.dart';
+import 'mainController.dart';
 
 
 
 class HomeScreen extends StatelessWidget {
-  HomeScreen({Key key}) : super(key: key);
+  HomeScreen({required Key key}) : super(key: key);
 
   final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
   FirebaseAuth _auth = FirebaseAuth.instance;
@@ -26,7 +27,7 @@ class HomeScreen extends StatelessWidget {
         leading: IconButton(
           color: Colors.grey,
           icon: Icon(Icons.menu),
-          onPressed: () => _key.currentState.openDrawer(),
+          onPressed: () => _key.currentState?.openDrawer(),
         ),
         actions: [
           Padding(
@@ -45,11 +46,11 @@ class HomeScreen extends StatelessWidget {
                       child: StreamBuilder<QuerySnapshot>(
                           stream: FirebaseFirestore.instance
                               .collection("users")
-                              .doc(_auth.currentUser.uid)
+                              .doc(_auth.currentUser?.uid)
                               .collection("cart")
                               .snapshots(),
                           builder: (context, snapshot) {
-                            String x = snapshot.data.size.toString();
+                            String? x = snapshot.data?.size.toString();
                             return Text(
                               "${x}",
                               style: TextStyle(
@@ -96,7 +97,7 @@ class HomeScreen extends StatelessWidget {
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       final List<DocumentSnapshot> documents =
-                          snapshot.data.docs;
+                          snapshot.data!.docs;
 
                       return Padding(
                         padding: const EdgeInsets.only(left: 20, right: 20),

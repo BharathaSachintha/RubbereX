@@ -1,4 +1,3 @@
-import 'package:app/Shopping/creditCard/paymentDone.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -252,10 +251,10 @@ class _CreditCardState extends State<CreditCard> {
                     width: MediaQuery.of(context).size.width * 0.9,
                     height: 50,
                     // ignore: deprecated_member_use
-                    child: FlatButton(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      color: Colors.transparent,
+                    child: TextButton(
+                      // shape: RoundedRectangleBorder(
+                      //     borderRadius: BorderRadius.circular(15)),
+                      // color: Colors.transparent,
                       child: Text(
                         "Submit",
                         style: TextStyle(

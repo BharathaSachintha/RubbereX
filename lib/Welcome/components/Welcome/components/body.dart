@@ -1,10 +1,11 @@
-import 'package:app/Screens/Login/login_screen.dart';
-import 'package:app/Screens/Welcome/components/background.dart';
-import 'package:app/components/rounded_button.dart';
-import 'package:app/constants.dart';
+import '../../../../Screens/Login/components/background.dart';
+import '../../../../Screens/Login/login_screen.dart';
+import '../../../../components/rounded_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../../../constants.dart';
 
 class Body extends StatelessWidget {
   @override

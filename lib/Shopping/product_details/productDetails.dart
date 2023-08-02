@@ -1,12 +1,13 @@
-import 'package:app/Shopping/mainController.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../mainController.dart';
+
 
 class ProductDetails extends StatefulWidget {
-  const ProductDetails({Key key}) : super(key: key);
+  const ProductDetails();
 
   @override
   _ProductDetailsState createState() => _ProductDetailsState();
@@ -150,10 +151,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                   width: MediaQuery.of(context).size.width * 0.9,
                   height: 50,
                   // ignore: deprecated_member_use
-                  child: FlatButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    color: Colors.black,
+                  child: TextButton(
+                    // shape: RoundedRectangleBorder(
+                    //     borderRadius: BorderRadius.circular(20)),
+                    // color: Colors.black,
                     child: Text(
                       "Add To Cart",
                       style: TextStyle(
@@ -164,7 +165,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                     onPressed: () async {
                       await FirebaseFirestore.instance
                           .collection("users")
-                          .doc(_auth.currentUser.uid)
+                          .doc(_auth.currentUser?.uid)
                           .collection("cart")
                           .doc(_mainController.tapped_item_id.value.toString())
                           .set({
@@ -182,14 +183,14 @@ class _ProductDetailsState extends State<ProductDetails> {
                       }).then((value) async {
                         await FirebaseFirestore.instance
                             .collection("users")
-                            .doc(_auth.currentUser.uid)
+                            .doc(_auth.currentUser?.uid)
                             .get()
                             .then((value) async {
                           print("TOTAL PRICE IS " +
                               value['cart_total'].toString());
                           await FirebaseFirestore.instance
                               .collection("users")
-                              .doc(_auth.currentUser.uid)
+                              .doc(_auth.currentUser?.uid)
                               .update({
                             "cart_total":
                                 int.parse(value['cart_total'].toString()) +
